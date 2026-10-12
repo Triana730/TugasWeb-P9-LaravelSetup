@@ -1,66 +1,70 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Tugas Rutin 9 — Setup Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Project Laravel 12 untuk Tugas Rutin Pertemuan 9.
 
-## About Laravel
+**Nama:** Selvira Triana
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Fitur yang Dikerjakan
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Instalasi Laravel 12 lewat Composer
+- Koneksi database MySQL (`tugasweb_p9`) lewat file `.env`
+- 3 route custom (`/`, `/about`, `/contact`) yang menampilkan view Blade
+- Data dinamis dikirim dari controller ke view (array)
+- `make:controller` (PageController) dan `make:model -m` (Product + migration)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Langkah Install
 
-## Learning Laravel
+1. Pastikan sudah terpasang **PHP 8.2+**, **Composer**, dan **XAMPP** (Apache + MySQL).
+2. Buat project:
+```
+   composer create-project laravel/laravel:^12.0 TugasWeb-P9-LaravelSetup
+```
+3. Masuk ke folder project:
+```
+   cd TugasWeb-P9-LaravelSetup
+```
+4. Nyalakan **Apache** dan **MySQL** di XAMPP, lalu buat database `tugasweb_p9` di phpMyAdmin (`http://localhost/phpmyadmin`).
+5. Atur koneksi database di file `.env`:
+```
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=tugasweb_p9
+   DB_USERNAME=root
+   DB_PASSWORD=
+```
+6. Jalankan migrasi untuk membuat tabel:
+```
+   php artisan migrate
+```
+7. Jalankan server:
+```
+   php artisan serve
+```
+8. Buka `http://127.0.0.1:8000` di browser.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Daftar Route
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+| URL        | Controller               | View                |
+|------------|--------------------------|---------------------|
+| `/`        | `PageController@home`    | `home.blade.php`    |
+| `/about`   | `PageController@about`   | `about.blade.php`   |
+| `/contact` | `PageController@contact` | `contact.blade.php` |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Struktur Folder
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+| Folder / File | Penjelasan |
+|---------------|------------|
+| `app/Http/Controllers/` | Controller, tempat logika halaman (mis. `PageController.php`) |
+| `app/Models/` | Model yang mewakili tabel database (mis. `Product.php`) |
+| `bootstrap/` | File untuk proses start aplikasi Laravel |
+| `config/` | File konfigurasi aplikasi |
+| `database/migrations/` | Cetak biru tabel database (migration) |
+| `public/` | Folder yang diakses publik, berisi `index.php` sebagai pintu masuk |
+| `resources/views/` | File tampilan Blade (`home`, `about`, `contact`, `welcome`) |
+| `routes/web.php` | Daftar route / alamat URL aplikasi |
+| `storage/` | Penyimpanan log, cache, dan file upload |
+| `vendor/` | Library hasil instalasi Composer |
+| `.env` | Pengaturan environment (database, dll), tidak ikut di-upload ke repo |
+| `artisan` | Perintah CLI bawaan Laravel |
+| `composer.json` | Daftar dependensi project |
