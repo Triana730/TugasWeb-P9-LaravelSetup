@@ -12,6 +12,12 @@ Project Laravel 12 untuk Tugas Rutin Pertemuan 9.
 - Data dinamis dikirim dari controller ke view (array)
 - `make:controller` (PageController) dan `make:model -m` (Product + migration)
 
+## Screenshot
+
+Welcome page Laravel saat `php artisan serve` berjalan:
+
+![Welcome Page](screenshots/welcome.png)
+
 ## Langkah Install
 
 1. Pastikan sudah terpasang **PHP 8.2+**, **Composer**, dan **XAMPP** (Apache + MySQL).
@@ -49,22 +55,4 @@ Project Laravel 12 untuk Tugas Rutin Pertemuan 9.
 |------------|--------------------------|---------------------|
 | `/`        | `PageController@home`    | `home.blade.php`    |
 | `/about`   | `PageController@about`   | `about.blade.php`   |
-| `/contact` | `PageController@contact` | `contact.blade.php` |
-
-## Struktur Folder
-
-| Folder / File | Penjelasan |
-|---------------|------------|
-| `app/Http/Controllers/` | Controller, tempat logika halaman (mis. `PageController.php`) |
-| `app/Models/` | Model yang mewakili tabel database (mis. `Product.php`) |
-| `bootstrap/` | File untuk proses start aplikasi Laravel |
-| `config/` | File konfigurasi aplikasi |
-| `database/migrations/` | Cetak biru tabel database (migration) |
-| `public/` | Folder yang diakses publik, berisi `index.php` sebagai pintu masuk |
-| `resources/views/` | File tampilan Blade (`home`, `about`, `contact`, `welcome`) |
-| `routes/web.php` | Daftar route / alamat URL aplikasi |
-| `storage/` | Penyimpanan log, cache, dan file upload |
-| `vendor/` | Library hasil instalasi Composer |
-| `.env` | Pengaturan environment (database, dll), tidak ikut di-upload ke repo |
-| `artisan` | Perintah CLI bawaan Laravel |
-| `composer.json` | Daftar dependensi project |
+| `/contact` | `PageController@contact` |
